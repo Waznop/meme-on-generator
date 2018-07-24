@@ -4,6 +4,7 @@ import requests
 import pickle
 
 data_path = "./data/"
+media_path = "./media/"
 page_path = "./page.pkl"
 page_start = 0
 page_range = 10
@@ -28,12 +29,12 @@ for page in range(page_start, page_start + page_range):
     items = client.memes_subgallery(page=page)
     for item in items:
         if isValid(item):
-            media_name = data_path + item.link.split("/")[-1]
+            media_name = media_path + item.link.split("/")[-1]
             r = requests.get(item.link, allow_redirects=True)
             with open(media_name, "wb") as f:
                 f.write(r.content)
-            meta_name = data_path + item.id + ".pkl"
-            with open(meta_name, "wb") as f:
+            data_name = data_path + item.id + ".pkl"
+            with open(data_name, "wb") as f:
                 pickle.dump(item, f, pickle.HIGHEST_PROTOCOL)
             print(page, item.id, item.width, item.height, item.size, item.link, item.score)
     with open(page_path, "wb") as f:
