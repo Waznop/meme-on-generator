@@ -1,18 +1,17 @@
 from imgurpython import ImgurClient
+from keys import CLIENT_ID, CLIENT_SECRET
 import requests
 import pickle
-
-client_id = "00c0d6ed15b4b07"
-client_secret = "abe1b03a6c3bb5354615b57c33fe7de60bc0281d"
 
 data_path = "./data/"
 page_path = "./page.pkl"
 page_start = 0
-page_range = 100
+page_range = 10
 max_size = 20000000 # 20MB
+valid_types = ["image/gif", "image/jpeg", "image/png"]
 
 def isValid(item):
-    return not item.nsfw and not item.is_album and item.size < max_size
+    return not item.nsfw and not item.is_album and item.type in valid_types and item.size < max_size
 
 try:
     with open(page_path, "rb") as f:
@@ -23,7 +22,7 @@ except FileNotFoundError:
         pickle.dump(page_start, f, pickle.HIGHEST_PROTOCOL)
         print("Starting fresh at page 0.")
 
-client = ImgurClient(client_id, client_secret)
+client = ImgurClient(CLIENT_ID, CLIENT_SECRET)
 
 for page in range(page_start, page_start + page_range):
     items = client.memes_subgallery(page=page)
