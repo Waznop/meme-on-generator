@@ -64,7 +64,12 @@ function grantMeme(meme) {
 
 function removeMeme(meme) {
     var memes = getMemes();
-    return true;
+    var idx = memes.indexOf(meme);
+    if (idx !== -1) {
+        memes.splice(idx, 1);
+        return setMemes(memes);
+    }
+    return false;
 }
 
 handlers.getMeme = function (args, context) {
