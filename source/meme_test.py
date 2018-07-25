@@ -19,5 +19,6 @@ if __name__ == "__main__":
 
     PlayFabClientAPI.ExecuteCloudScript({
         "FunctionName": "getMeme",
-        "GeneratePlayStreamEvent": True
+        "GeneratePlayStreamEvent": True,
+        "RevisionSelection": "Latest"
     }, callback)

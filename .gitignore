@@ -1,0 +1,6 @@
+data/*
+media/*
+analysis.pkl
+page.pkl
+source/keys.py
+source/__pycache__/*
