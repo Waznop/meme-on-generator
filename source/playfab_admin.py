@@ -5,7 +5,7 @@ from keys import TITLE_ID, DEVELOPER_SECRET
 from meme_scrape import data_path
 from glob import glob
 
-def callback(success, failure):
+def genericCallback(success, failure):
 	if success:
 		print("Success!")
 		print(success)
@@ -30,4 +30,4 @@ if __name__ == "__main__":
 
 	PlayFabAdminAPI.GetTitleInternalData({
 		"Key": "memes"
-	}, callback)
+	}, genericCallback)

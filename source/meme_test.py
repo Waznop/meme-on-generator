@@ -1,7 +1,7 @@
 from playfab import PlayFabClientAPI, PlayFabSettings
 from keys import TITLE_ID
 
-def callback(success, failure):
+def genericCallback(success, failure):
     if success:
         print("Success!")
         print(success)
@@ -15,10 +15,10 @@ if __name__ == "__main__":
     PlayFabClientAPI.LoginWithCustomID({
         "CustomId": "test",
         "CreateAccount": True
-    }, callback)
+    }, genericCallback)
 
     PlayFabClientAPI.ExecuteCloudScript({
         "FunctionName": "getMeme",
         "GeneratePlayStreamEvent": True,
         "RevisionSelection": "Latest"
-    }, callback)
+    }, genericCallback)
