@@ -24,7 +24,7 @@ if __name__ == "__main__":
 			item = pickle.load(f)
 			data_list.append(item.link.split("/")[-1])
 
-	PlayFabAdminAPI.SetTitleData({
+	PlayFabAdminAPI.SetTitleInternalData({
 		"Key": "memes",
 		"Value": json.dumps(data_list)
 	}, None)
