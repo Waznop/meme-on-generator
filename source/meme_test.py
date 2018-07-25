@@ -18,8 +18,9 @@ if __name__ == "__main__":
     }, None)
 
     PlayFabClientAPI.ExecuteCloudScript({
-        "FunctionName": "skipMeme",
+        "FunctionName": "buyMeme",
         "FunctionParameter": {
+            "meme": "ypJCUWw.png",
             "price": 2
         },
         "GeneratePlayStreamEvent": True,
