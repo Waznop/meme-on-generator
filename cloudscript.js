@@ -51,9 +51,21 @@ function getMemes() {
     return [];
 }
 
+function setMemes(memes) {
+    server.UpdateUserReadOnlyData({
+        PlayFabId: currentPlayerId,
+        Data: {
+            memes: memes
+        }
+    });
+    // TODO: check success
+    return true;
+}
+
 function grantMeme(meme) {
     var memes = getMemes();
-    return true;
+    memes.push(meme);
+    return setMemes(memes);
 }
 
 function removeMeme(meme) {
