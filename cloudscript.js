@@ -33,18 +33,22 @@ function updateCoins(delta) {
 }
 
 function getMemes() {
-    var memes = server.GetUserReadOnlyData({
+    var data = server.GetUserReadOnlyData({
         PlayFabId: currentPlayerId,
         Keys: ["memes"]
-    });
-    
-    log.info(memes);
-    var test1 = memes["memes"];
-    log.info(test1);
-    var test2 = test1["Value"];
-    log.info(test2);
+    })["Data"];
 
-    return test2;
+    log.info(data);
+
+    if ("memes" in data) {
+        var memes = data["memes"];
+        log.info(memes);
+        var test1 = memes["Value"];
+        log.info(test1);
+        return test1;
+    }
+    
+    return [];
 }
 
 function grantMeme(meme) {
