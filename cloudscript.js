@@ -55,7 +55,7 @@ function setMemes(memes) {
     server.UpdateUserReadOnlyData({
         PlayFabId: currentPlayerId,
         Data: {
-            memes: memes
+            memes: JSON.stringify(memes)
         }
     });
     // TODO: check success
@@ -65,8 +65,6 @@ function setMemes(memes) {
 function grantMeme(meme) {
     var memes = getMemes();
     memes.push(meme);
-    memes.push(meme);
-    log.info(memes);
     return setMemes(memes);
 }
 
