@@ -1,7 +1,8 @@
 var imgur_prefix = "https://i.imgur.com/"
 
 handlers.getMeme = function (args, context) {
-    var memes = server.GetTitleInternalData({"Key": "memes"})["Data"]["memes"];
+    var memesString = server.GetTitleInternalData({"Key": "memes"})["Data"]["memes"];
+    var memes = JSON.parse(memesString)
     log.info(memes.length);
     log.info(memes[0]);
     log.info(memes);
