@@ -18,7 +18,9 @@ handlers.skipMeme = function (args, context) {
         StatisticNames: ["coins"]
     });
 
-    log.info(result);
+    var test1 = result["Statistics"];
+
+    log.info(test1);
 
     var test = JSON.parse(result["Statistics"]);
 
