@@ -15,12 +15,16 @@ handlers.skipMeme = function (args, context) {
 
     var result = server.GetPlayerStatistics({
         PlayFabId: currentPlayerId,
-        StatisticNames: ["Coins"]
+        StatisticNames: ["coins"]
     });
 
     log.info(result);
 
-    var numCoins = JSON.parse(result)["data"]["Statistics"][0]["Value"];
+    var stats = JSON.parse(result)["Statistics"];
+    var numCoins = 0;
+    if (stats.length > 0) {
+        numCoins = stats[0]["Value"];
+    }
     
     log.info(numCoins);
 
@@ -31,7 +35,7 @@ handlers.skipMeme = function (args, context) {
     server.UpdatePlayerStatistics({
         PlayFabId: currentPlayerId,
         Statistics: [{
-            StatisticName: "Coins",
+            StatisticName: "coins",
             Value: numCoins
         }]
     });
