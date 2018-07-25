@@ -12,6 +12,11 @@ def callback(success, failure):
 if __name__ == "__main__":
     PlayFabSettings.TitleId = TITLE_ID
     
+    PlayFabClientAPI.LoginWithCustomID({
+        "CustomId": "test",
+        "CreateAccount": True
+    }, callback)
+
     PlayFabClientAPI.ExecuteCloudScript({
         "FunctionName": "getMeme",
         "GeneratePlayStreamEvent": True
