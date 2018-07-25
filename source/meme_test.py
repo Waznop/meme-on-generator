@@ -21,7 +21,7 @@ if __name__ == "__main__":
         "FunctionName": "buyMeme",
         "FunctionParameter": {
             "meme": "ypJCUWw.png",
-            "price": 2
+            "price": 0
         },
         "GeneratePlayStreamEvent": True,
         "RevisionSelection": "Latest"

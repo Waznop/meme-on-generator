@@ -65,6 +65,7 @@ function setMemes(memes) {
 function grantMeme(meme) {
     var memes = getMemes();
     memes.push(meme);
+    log.info(memes);
     return setMemes(memes);
 }
 
