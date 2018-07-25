@@ -19,13 +19,15 @@ total_score = sum(el[0] for el in data_list)
 avg_score = total_score / num_memes
 
 # price = base + score * slope
-skip_base = -min_score + 1
 skip_slope = 0.01
+skip_base = -min_score * skip_slope + 1
 skip_flux = 0.99
 buy_mult = 50
 buy_flux = 1.1
 sell_mult = 0.5 * buy_mult
 sell_flux = 1 / buy_flux
+redis_mult = 100
+int_mult = 1 / redis_mult
 
 analysis = {
     "min_score": min_score,
@@ -38,7 +40,9 @@ analysis = {
     "buy_mult": buy_mult,
     "buy_flux": buy_flux,
     "sell_mult": sell_mult,
-    "sell_flux": sell_flux
+    "sell_flux": sell_flux,
+    "redis_mult": redis_mult,
+    "int_mult": int_mult
 }
 
 with open(analysis_path, "wb") as f:

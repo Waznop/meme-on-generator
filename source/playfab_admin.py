@@ -3,6 +3,7 @@ import json
 from playfab import PlayFabAdminAPI, PlayFabSettings
 from keys import TITLE_ID, DEVELOPER_SECRET
 from meme_scrape import data_path
+from meme_analysis import analysis_path
 from glob import glob
 
 def genericCallback(success, failure):
@@ -23,11 +24,19 @@ if __name__ == "__main__":
 			item = pickle.load(f)
 			data_list.append(item.link.split("/")[-1])
 
-	PlayFabAdminAPI.SetTitleInternalData({
+	PlayFabAdminAPI.SetTitleData({
 		"Key": "memes",
 		"Value": json.dumps(data_list)
 	}, None)
 
-	PlayFabAdminAPI.GetTitleInternalData({
-		"Key": "memes"
-	}, genericCallback)
+	with open(analysis_path, "rb") as f:
+		analysis = pickle.load(f)
+		for k, v in analysis.items():
+			PlayFabAdminAPI.SetTitleData({
+				"Key": k,
+				"Value": v
+			}, None)
+
+	print("Finished uploading TitleData.")
+
+
