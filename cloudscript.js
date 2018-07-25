@@ -11,23 +11,11 @@ handlers.getMeme = function (args, context) {
 handlers.skipMeme = function (args, context) {
     var price = args.price;
 
-    log.info(price);
-
-    var result = server.GetPlayerStatistics({
+    var stats = server.GetPlayerStatistics({
         PlayFabId: currentPlayerId,
         StatisticNames: ["coins"]
-    });
+    })["Statistics"];
 
-    var test1 = result["Statistics"];
-
-    log.info(test1);
-
-    var test = JSON.parse(result["Statistics"]);
-
-    log.info(test);
-
-    var stats = JSON.parse(result)["Statistics"];
-    
     log.info(stats);
 
     var numCoins = 0;
