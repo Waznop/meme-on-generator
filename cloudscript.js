@@ -38,14 +38,8 @@ function getMemes() {
         Keys: ["memes"]
     })["Data"];
 
-    log.info(data);
-
     if ("memes" in data) {
-        var memes = data["memes"];
-        log.info(memes);
-        var test1 = memes["Value"];
-        log.info(test1);
-        return test1;
+        return JSON.parse(data["memes"]["Value"]);
     }
     
     return [];
