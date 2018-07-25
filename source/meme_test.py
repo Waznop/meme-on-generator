@@ -15,7 +15,7 @@ if __name__ == "__main__":
     PlayFabClientAPI.LoginWithCustomID({
         "CustomId": "test",
         "CreateAccount": True
-    }, genericCallback)
+    }, None)
 
     PlayFabClientAPI.ExecuteCloudScript({
         "FunctionName": "getMeme",
