@@ -20,7 +20,14 @@ handlers.skipMeme = function (args, context) {
 
     log.info(result);
 
+    var test = JSON.parse(result["Statistics"]);
+
+    log.info(test);
+
     var stats = JSON.parse(result)["Statistics"];
+    
+    log.info(stats);
+
     var numCoins = 0;
     if (stats.length > 0) {
         numCoins = stats[0]["Value"];
